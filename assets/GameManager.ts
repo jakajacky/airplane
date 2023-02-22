@@ -1,6 +1,7 @@
 import { MeshRenderer } from 'cc';
 import { Material } from 'cc';
 import { _decorator, Component, Node } from 'cc';
+import { JSB } from 'cc/env';
 const { ccclass, property, executeInEditMode, menu, requireComponent } = _decorator;
 //装饰器 向creator注册GameManager
 @ccclass('GameManager')
