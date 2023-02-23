@@ -19,7 +19,6 @@ export class MovingSceneBg extends Component {
     }
 
     update(deltaTime: number) {
-        console.log('update');
         this._moveBackground(deltaTime);
     }
 
@@ -29,8 +28,6 @@ export class MovingSceneBg extends Component {
     }
 
     private _moveBackground(deltaTime: number) {
-        console.log('-------'+this.bg01);
-
         this.bg01.setPosition(0, 0, this.bg01.position.z + this._bgSpeed * deltaTime)
         this.bg02.setPosition(0, 0, this.bg02.position.z + this._bgSpeed * deltaTime)
         if (this.bg01.position.z > this._bgMovingRange) {
