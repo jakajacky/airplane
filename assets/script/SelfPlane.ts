@@ -24,43 +24,28 @@ export class SelfPlane extends Component {
     _planeMove(touch: Touch, event: EventTouch) {
         const delta = touch.getDelta();
         let p = this.plane.getPosition();
-        console.log(p.x, p.y, p.z);
         this.plane.setPosition(p.x + 0.01 * this.speed * delta.x, p.y, p.z - 0.01 * this.speed * delta.y);
     }
 
     _touchMove(event: EventTouch) {
         const touch = event.touch;
         const delta = touch.getDelta();
-
+        // 3D触摸使用射线检测
         this.cameraCom.screenPointToRay(touch.getLocationX(), touch.getLocationY(), this._ray);
         if (PhysicsSystem.instance.raycast(this._ray)) {
             const raycastResults = PhysicsSystem.instance.raycastResults;
             for (let i = 0; i < raycastResults.length; i++) {
                 const item = raycastResults[i];
                 if (item.collider.node == this.plane) {
-                    console.log('raycast hit the target node !');
-
-
+                    console.log('触摸飞机!');
                     let pos = this.plane.position;
 
-
-
-                    console.log(pos.x, pos.y, pos.z);
-                    console.log('++++'+this.plane.scale);
-                    console.log('++++'+this.plane.rotation);
-
-                    this.plane.setPosition(pos.x + 0.01 * this.speed * delta.x, pos.y + 0.01 * this.speed * delta.y, pos.z);
+                    this.plane.setPosition(pos.x + 0.01 * this.speed * delta.x, pos.y, pos.z - 0.01 * this.speed * delta.y);
 
                     break;
                 }
             }
         }
-        else {
-            let p = this.plane.getPosition();
-            console.log(p.x, p.y, p.z);
-            this.plane.setPosition(p.x + 0.01 * this.speed * delta.x, p.y, p.z - 0.01 * this.speed * delta.y);
-        }
-
     }
 }
 
