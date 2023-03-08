@@ -1,11 +1,20 @@
+import { Constant } from './Constant';
 import { Bullet } from './../bullet/Bullet';
-import { _decorator, Component, instantiate, Node, Prefab } from 'cc';
+import { _decorator, Component, instantiate, math, Node, Prefab } from 'cc';
+import { EnemyPlane } from '../plane/EnemyPlane';
 const { ccclass, property } = _decorator;
 
 @ccclass('GameManager')
 export class GameManager extends Component {
     @property(Node)
     public playerPlane: Node = null;
+    // 敌机预置
+    @property(Prefab)
+    public enemyPlane01: Prefab = null;
+    @property(Prefab)
+    public enemyPlane02: Prefab = null;
+
+    // 子弹预置
     @property(Prefab)
     public bullet01: Prefab = null;
     @property(Prefab)
@@ -16,16 +25,31 @@ export class GameManager extends Component {
     public bullet04: Prefab = null;
     @property(Prefab)
     public bullet05: Prefab = null;
+
+    // 子弹挂载的节点
+    @property(Node)
+    public bulletRoot: Node = null;
+
+    // 敌机其他参数
+    @property
+    public createEnemyTime = 1;
+    @property
+    public enemy1Speed = 0.005;
+    @property
+    public enemy2Speed = 0.007;
+
+
+    // 子弹其他参数
     @property
     public shootTime = 0.3;
     @property
     public bulletSpeed = 0.1;
 
-    @property(Node)
-    public bulletRoot: Node = null;
 
     private _curShootTime = 0;
     private _isShooting = false;
+    private _currCreateEnemyTime = 0;
+    private _combinationInterval = 1;
 
     start() {
         this._init();
@@ -37,6 +61,21 @@ export class GameManager extends Component {
             this.createPlayerBullet();
             this._curShootTime = 0;
         }
+
+        if (this._combinationInterval === Constant.Combination.PLAN1) {
+            this._currCreateEnemyTime += deltaTime;
+            if (this._currCreateEnemyTime > this.createEnemyTime) {
+                this.createEnemyPlane();
+                this._currCreateEnemyTime = 0;
+            }
+        }
+        else if (this._combinationInterval === Constant.Combination.PLAN2) {
+
+        }
+        else {
+
+        }
+
     }
 
     public createPlayerBullet() {
@@ -48,12 +87,44 @@ export class GameManager extends Component {
         bulletComp.bulletSpeed = this.bulletSpeed;
     }
 
+    public createEnemyPlane() {
+        const whichEnemy = math.randomRangeInt(1,3);
+        let prefab: Prefab = null;
+        let speed = 0;
+        if (whichEnemy === Constant.PlaneType.TYPE1) {
+            prefab = this.enemyPlane01;
+            speed = this.enemy1Speed;
+        }
+        else {
+            prefab = this.enemyPlane02;
+            speed = this.enemy2Speed;
+        }
+
+        const enemy = instantiate(prefab);
+        enemy.setParent(this.node);
+        const enemyComp = enemy.getComponent(EnemyPlane);
+        enemyComp.show(speed);
+
+        const randomPosX = math.randomRangeInt(-4, 4);
+        enemy.setPosition(randomPosX, 0.5, -10);
+    }
+
     public isShooting(value: boolean) {
         this._isShooting = value;
     }
 
     private _init() {
         this._curShootTime = this.shootTime;
+
+        this.changePlaneModel();
+    }
+
+    private changePlaneModel() {
+        this.schedule(this._modelChanged, 10, 3)
+    }
+
+    private _modelChanged() {
+        this._combinationInterval ++;
     }
 }
 

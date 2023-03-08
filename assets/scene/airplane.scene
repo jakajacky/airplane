@@ -1085,7 +1085,7 @@
     "gameManager": {
       "__id__": 53
     },
-    "_id": "4cgKaHnoZCp43TOsK5IQfI"
+    "_id": "40GyQ6i7RKx4E+PnvU/brY"
   },
   {
     "__type__": "2f707grHTxEaYb8SM86Z8Xu",
@@ -1098,6 +1098,14 @@
     "__prefab": null,
     "playerPlane": {
       "__id__": 40
+    },
+    "enemyPlane01": {
+      "__uuid__": "ca8e2095-8a10-43a1-b277-06142c286b4e",
+      "__expectedType__": "cc.Prefab"
+    },
+    "enemyPlane02": {
+      "__uuid__": "81fd573b-e070-4587-84fa-085cb2c32f45",
+      "__expectedType__": "cc.Prefab"
     },
     "bullet01": {
       "__uuid__": "abe3accd-f479-47c2-be21-2b502c73a054",
@@ -1119,11 +1127,14 @@
       "__uuid__": "2ace11b9-9477-4d90-b396-cb320bce4801",
       "__expectedType__": "cc.Prefab"
     },
-    "shootTime": 0.3,
-    "bulletSpeed": 0.1,
     "bulletRoot": {
       "__id__": 55
     },
+    "createEnemyTime": 1,
+    "enemy1Speed": 0.05,
+    "enemy2Speed": 0.07,
+    "shootTime": 0.3,
+    "bulletSpeed": 0.1,
     "_id": "98AhY0PNpHqKpTx597zyXt"
   },
   {

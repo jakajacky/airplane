@@ -1,4 +1,4 @@
-import { GameManager } from './framework/GameManager';
+import { GameManager } from '../framework/GameManager';
 import { _decorator, Component, Node, EventTouch, Touch, input, Input, Camera, geometry, PhysicsSystem, rect, Game } from 'cc';
 const { ccclass, property } = _decorator;
 
