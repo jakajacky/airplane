@@ -56,24 +56,51 @@ export class GameManager extends Component {
     }
 
     update(deltaTime: number) {
+        // 渲染子弹
         this._curShootTime += deltaTime;
         if (this._isShooting && this._curShootTime > this.shootTime) {
             this.createPlayerBullet();
             this._curShootTime = 0;
         }
 
+        // 渲染敌机
+        this._currCreateEnemyTime += deltaTime;
         if (this._combinationInterval === Constant.Combination.PLAN1) {
-            this._currCreateEnemyTime += deltaTime;
+            // Plan1： 单架敌机
             if (this._currCreateEnemyTime > this.createEnemyTime) {
                 this.createEnemyPlane();
                 this._currCreateEnemyTime = 0;
             }
         }
         else if (this._combinationInterval === Constant.Combination.PLAN2) {
-
+            // Plan2： 单架敌机/一字敌机群
+            if (this._currCreateEnemyTime > this.createEnemyTime * 0.9) {
+                const randomCombination = math.randomRangeInt(1,3);
+                if (randomCombination === Constant.Combination.PLAN2) {
+                    // 一字敌机群
+                    this.createEnemyPlane1();
+                }
+                else {
+                    // 单架敌机
+                    this.createEnemyPlane();
+                }
+                this._currCreateEnemyTime = 0;
+            }
         }
         else {
-
+            // Plan3： V字敌机群
+            if (this._currCreateEnemyTime > this.createEnemyTime * 0.9) {
+                const randomCombination = math.randomRangeInt(1,3);
+                if (randomCombination === Constant.Combination.PLAN2) {
+                    // 一字敌机群
+                    this.createEnemyPlane1();
+                }
+                else {
+                    // 单架敌机
+                    this.createEnemyPlane();
+                }
+                this._currCreateEnemyTime = 0;
+            }
         }
 
     }
@@ -87,6 +114,7 @@ export class GameManager extends Component {
         bulletComp.bulletSpeed = this.bulletSpeed;
     }
 
+    // 创建单架飞机
     public createEnemyPlane() {
         const whichEnemy = math.randomRangeInt(1,3);
         let prefab: Prefab = null;
@@ -107,6 +135,20 @@ export class GameManager extends Component {
 
         const randomPosX = math.randomRangeInt(-4, 4);
         enemy.setPosition(randomPosX, 0.5, -10);
+    }
+
+    // 创建一字飞机编队
+    public createEnemyPlane1() {
+        const enemyArray = new Array<Node>(5);
+        for (let i = 0; i < enemyArray.length; i++) {
+            enemyArray[i] = instantiate(this.enemyPlane01);
+            const element = enemyArray[i];
+            element.setParent(this.node);
+
+            element.setPosition(-1.4+i*0.7, 0.5, -10);
+            const enemyComp = element.getComponent(EnemyPlane)
+            enemyComp.show(this.enemy1Speed);
+        }
     }
 
     public isShooting(value: boolean) {
