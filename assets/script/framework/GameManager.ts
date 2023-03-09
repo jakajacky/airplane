@@ -74,7 +74,7 @@ export class GameManager extends Component {
         }
         else if (this._combinationInterval === Constant.Combination.PLAN2) {
             // Plan2： 单架敌机/一字敌机群
-            if (this._currCreateEnemyTime > this.createEnemyTime * 0.9) {
+            if (this._currCreateEnemyTime > this.createEnemyTime * 1.5) {
                 const randomCombination = math.randomRangeInt(1,3);
                 if (randomCombination === Constant.Combination.PLAN2) {
                     // 一字敌机群
@@ -88,10 +88,14 @@ export class GameManager extends Component {
             }
         }
         else {
-            // Plan3： V字敌机群
-            if (this._currCreateEnemyTime > this.createEnemyTime * 0.9) {
-                const randomCombination = math.randomRangeInt(1,3);
-                if (randomCombination === Constant.Combination.PLAN2) {
+            // Plan3： 单架敌机/一字敌机群/V字敌机群
+            if (this._currCreateEnemyTime > this.createEnemyTime * 1.5) {
+                const randomCombination = math.randomRangeInt(1,4);
+                if (randomCombination === Constant.Combination.PLAN3) {
+                    // V字敌机群
+                    this.createEnemyPlane2();
+                }
+                else if (randomCombination === Constant.Combination.PLAN2) {
                     // 一字敌机群
                     this.createEnemyPlane1();
                 }
@@ -145,9 +149,34 @@ export class GameManager extends Component {
             const element = enemyArray[i];
             element.setParent(this.node);
 
-            element.setPosition(-1.4+i*0.7, 0.5, -10);
+            element.setPosition(-0.9+i*0.45, 0.5, -10);
             const enemyComp = element.getComponent(EnemyPlane)
             enemyComp.show(this.enemy1Speed);
+        }
+    }
+
+    // 创建V字飞机编队
+    public createEnemyPlane2() {
+        const enemyArray = new Array<Node>(7);
+
+        const combinationPos = [
+            -0.9, 0.5, -4.9,
+            -0.6, 0.5, -4.6,
+            -0.3, 0.5, -4.3,
+            0, 0.5, -4,
+            0.3, 0.5, -4.3,
+            0.6, 0.5, -4.6,
+            0.9, 0.5, -4.9,
+        ];
+
+        for (let i = 0; i < enemyArray.length; i++) {
+            enemyArray[i] = instantiate(this.enemyPlane02);
+            const element = enemyArray[i];
+            element.setParent(this.node);
+            const startIndex = i * 3;
+            element.setPosition(combinationPos[startIndex], combinationPos[startIndex+1], combinationPos[startIndex+2]);
+            const enemyComp = element.getComponent(EnemyPlane)
+            enemyComp.show(this.enemy2Speed);
         }
     }
 

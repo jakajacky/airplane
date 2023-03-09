@@ -30,16 +30,16 @@
         "__id__": 34
       },
       {
-        "__id__": 54
+        "__id__": 64
       },
       {
-        "__id__": 55
+        "__id__": 65
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 69
+      "__id__": 79
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -70,7 +70,7 @@
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 74
+      "__id__": 80
     },
     "_id": "b46d2039-3980-49a5-9cec-8159cbeae5c6"
   },
@@ -830,34 +830,34 @@
     ],
     "propertyOverrides": [
       {
-        "__id__": 56
-      },
-      {
-        "__id__": 58
-      },
-      {
-        "__id__": 59
-      },
-      {
-        "__id__": 60
-      },
-      {
-        "__id__": 61
-      },
-      {
-        "__id__": 63
-      },
-      {
-        "__id__": 64
-      },
-      {
-        "__id__": 65
-      },
-      {
-        "__id__": 67
+        "__id__": 66
       },
       {
         "__id__": 68
+      },
+      {
+        "__id__": 69
+      },
+      {
+        "__id__": 70
+      },
+      {
+        "__id__": 71
+      },
+      {
+        "__id__": 73
+      },
+      {
+        "__id__": 74
+      },
+      {
+        "__id__": 75
+      },
+      {
+        "__id__": 77
+      },
+      {
+        "__id__": 78
       }
     ],
     "removedComponents": []
@@ -1080,24 +1080,159 @@
     },
     "speed": 1,
     "plane": {
-      "__id__": 40
-    },
-    "gameManager": {
       "__id__": 53
     },
+    "gameManager": {
+      "__id__": 63
+    },
     "_id": "40GyQ6i7RKx4E+PnvU/brY"
+  },
+  {
+    "__type__": "cc.Node",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 34
+    },
+    "_prefab": {
+      "__id__": 54
+    }
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 53
+    },
+    "asset": {
+      "__uuid__": "71d0b0a7-6303-4317-986a-2ba0045e0560@c13c3",
+      "__expectedType__": "cc.Prefab"
+    },
+    "fileId": "60mknV9MFcv5S4/+J3ONMb",
+    "instance": {
+      "__id__": 55
+    },
+    "targetOverrides": null,
+    "nestedPrefabInstanceRoots": null
+  },
+  {
+    "__type__": "cc.PrefabInstance",
+    "fileId": "62V6ntcAlPOJp8ehs8rcFo",
+    "prefabRootNode": {
+      "__id__": 34
+    },
+    "mountedChildren": [],
+    "mountedComponents": [],
+    "propertyOverrides": [
+      {
+        "__id__": 56
+      },
+      {
+        "__id__": 58
+      },
+      {
+        "__id__": 59
+      },
+      {
+        "__id__": 60
+      },
+      {
+        "__id__": 61
+      }
+    ],
+    "removedComponents": []
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 57
+    },
+    "propertyPath": [
+      "_name"
+    ],
+    "value": "plane01"
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "60mknV9MFcv5S4/+J3ONMb"
+    ]
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 57
+    },
+    "propertyPath": [
+      "_lpos"
+    ],
+    "value": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    }
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 57
+    },
+    "propertyPath": [
+      "_lrot"
+    ],
+    "value": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    }
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 57
+    },
+    "propertyPath": [
+      "_euler"
+    ],
+    "value": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    }
+  },
+  {
+    "__type__": "CCPropertyOverrideInfo",
+    "targetInfo": {
+      "__id__": 62
+    },
+    "propertyPath": [
+      "_materials",
+      "0"
+    ],
+    "value": {
+      "__uuid__": "941cdc12-7c93-4901-8e41-82ed98cc547b",
+      "__expectedType__": "cc.Material"
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "1cUyrtVEtbEp6fnyU6Qiu5"
+    ]
   },
   {
     "__type__": "2f707grHTxEaYb8SM86Z8Xu",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 54
+      "__id__": 64
     },
     "_enabled": true,
     "__prefab": null,
     "playerPlane": {
-      "__id__": 40
+      "__id__": 53
     },
     "enemyPlane01": {
       "__uuid__": "ca8e2095-8a10-43a1-b277-06142c286b4e",
@@ -1128,7 +1263,7 @@
       "__expectedType__": "cc.Prefab"
     },
     "bulletRoot": {
-      "__id__": 55
+      "__id__": 65
     },
     "createEnemyTime": 1,
     "enemy1Speed": 0.05,
@@ -1148,7 +1283,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 53
+        "__id__": 63
       }
     ],
     "_prefab": null,
@@ -1224,7 +1359,7 @@
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 57
+      "__id__": 67
     },
     "propertyPath": [
       "_name"
@@ -1240,7 +1375,7 @@
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 57
+      "__id__": 67
     },
     "propertyPath": [
       "_lpos"
@@ -1255,7 +1390,7 @@
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 57
+      "__id__": 67
     },
     "propertyPath": [
       "_lrot"
@@ -1271,7 +1406,7 @@
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 57
+      "__id__": 67
     },
     "propertyPath": [
       "_euler"
@@ -1286,7 +1421,7 @@
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 62
+      "__id__": 72
     },
     "propertyPath": [
       "_lpos"
@@ -1308,7 +1443,7 @@
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 62
+      "__id__": 72
     },
     "propertyPath": [
       "_lrot"
@@ -1324,7 +1459,7 @@
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 62
+      "__id__": 72
     },
     "propertyPath": [
       "_euler"
@@ -1339,7 +1474,7 @@
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 66
+      "__id__": 76
     },
     "propertyPath": [
       "_lrot"
@@ -1362,7 +1497,7 @@
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 66
+      "__id__": 76
     },
     "propertyPath": [
       "_euler"
@@ -1377,7 +1512,7 @@
   {
     "__type__": "CCPropertyOverrideInfo",
     "targetInfo": {
-      "__id__": 66
+      "__id__": 76
     },
     "propertyPath": [
       "_lpos"
@@ -1395,14 +1530,7 @@
     "asset": null,
     "fileId": "b46d2039-3980-49a5-9cec-8159cbeae5c6",
     "instance": null,
-    "targetOverrides": [
-      {
-        "__id__": 70
-      },
-      {
-        "__id__": 72
-      }
-    ],
+    "targetOverrides": [],
     "nestedPrefabInstanceRoots": [
       {
         "__id__": 15
@@ -1413,70 +1541,24 @@
     ]
   },
   {
-    "__type__": "cc.TargetOverrideInfo",
-    "source": {
-      "__id__": 52
-    },
-    "sourceInfo": null,
-    "propertyPath": [
-      "plane"
-    ],
-    "target": {
-      "__id__": 34
-    },
-    "targetInfo": {
-      "__id__": 71
-    }
-  },
-  {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      "62V6ntcAlPOJp8ehs8rcFo",
-      "60mknV9MFcv5S4/+J3ONMb"
-    ]
-  },
-  {
-    "__type__": "cc.TargetOverrideInfo",
-    "source": {
-      "__id__": 53
-    },
-    "sourceInfo": null,
-    "propertyPath": [
-      "playerPlane"
-    ],
-    "target": {
-      "__id__": 34
-    },
-    "targetInfo": {
-      "__id__": 73
-    }
-  },
-  {
-    "__type__": "cc.TargetInfo",
-    "localID": [
-      "62V6ntcAlPOJp8ehs8rcFo",
-      "60mknV9MFcv5S4/+J3ONMb"
-    ]
-  },
-  {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 75
+      "__id__": 81
     },
     "shadows": {
-      "__id__": 76
+      "__id__": 82
     },
     "_skybox": {
-      "__id__": 77
+      "__id__": 83
     },
     "fog": {
-      "__id__": 78
+      "__id__": 84
     },
     "octree": {
-      "__id__": 79
+      "__id__": 85
     },
     "lightProbeInfo": {
-      "__id__": 80
+      "__id__": 86
     },
     "bakedWithStationaryMainLight": false
   },
