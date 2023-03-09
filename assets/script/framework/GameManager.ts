@@ -1,6 +1,6 @@
 import { Constant } from './Constant';
 import { Bullet } from './../bullet/Bullet';
-import { _decorator, Component, instantiate, math, Node, Prefab } from 'cc';
+import { _decorator, Component, instantiate, math, Node, Prefab, Vec3 } from 'cc';
 import { EnemyPlane } from '../plane/EnemyPlane';
 const { ccclass, property } = _decorator;
 
@@ -116,6 +116,17 @@ export class GameManager extends Component {
         bullet.setPosition(pos.x, pos.y+0.5, pos.z);
         const bulletComp = bullet.getComponent(Bullet)
         bulletComp.bulletSpeed = this.bulletSpeed;
+        bulletComp.show(false);
+    }
+
+    public createEnemyBullet(bulletPos: Vec3) {
+        const bullet = instantiate(this.bullet01);
+        bullet.setParent(this.bulletRoot);
+        const pos = bulletPos;
+        bullet.setPosition(pos.x, pos.y+0.5, pos.z);
+        const bulletComp = bullet.getComponent(Bullet)
+        bulletComp.bulletSpeed = this.bulletSpeed;
+        bulletComp.show(true);
     }
 
     // 创建单架飞机
@@ -135,7 +146,7 @@ export class GameManager extends Component {
         const enemy = instantiate(prefab);
         enemy.setParent(this.node);
         const enemyComp = enemy.getComponent(EnemyPlane);
-        enemyComp.show(speed);
+        enemyComp.show(this, speed, true);
 
         const randomPosX = math.randomRangeInt(-4, 4);
         enemy.setPosition(randomPosX, 0.5, -10);
@@ -151,7 +162,7 @@ export class GameManager extends Component {
 
             element.setPosition(-0.9+i*0.45, 0.5, -10);
             const enemyComp = element.getComponent(EnemyPlane)
-            enemyComp.show(this.enemy1Speed);
+            enemyComp.show(this, this.enemy1Speed, false);
         }
     }
 
@@ -176,7 +187,7 @@ export class GameManager extends Component {
             const startIndex = i * 3;
             element.setPosition(combinationPos[startIndex], combinationPos[startIndex+1], combinationPos[startIndex+2]);
             const enemyComp = element.getComponent(EnemyPlane)
-            enemyComp.show(this.enemy2Speed);
+            enemyComp.show(this, this.enemy2Speed, false);
         }
     }
 
